@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = Friendship.where(user_id: current_user.id)
+    @friendships = Friendship.my_friends
   end
 
   def new
