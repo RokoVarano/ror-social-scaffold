@@ -2,6 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= button_to 'Send Friend request', request_friendship_path(user)%>
+    <%= button_to 'Send Friend request', "/users/#{current_user.id}/friendship/#{user.id}"%>
   </span>
 </li>
