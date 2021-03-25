@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = Friendship.my_friends
+    @friendships = Friendship.all
   end
 
   def new
