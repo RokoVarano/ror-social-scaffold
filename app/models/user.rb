@@ -39,4 +39,11 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def friend_posts
+    fposts = []
+    friends.map { | friend | friend.posts.map {|post| fposts << post} }
+    posts.map { |post| fposts << post }
+    fposts.sort_by { |post| post[:created_at]}.reverse
+  end
 end
