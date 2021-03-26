@@ -44,10 +44,6 @@ group :development, :test do
   gem "better_errors"
 end
 
-group :test do
-  gem 'rspec'
-end
-
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -65,3 +61,26 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'standard'
+  gem 'capybara', '~> 3.35', '>= 3.35.3'
+end
+
+group :development, :test do
+end
+
+group :development, :test do
+end
+
+group :development, :test do
+end
+
+gem 'standard', group: [:development, :test]
+group :development, :test do
+end
+
+group :development, :test do
+end
