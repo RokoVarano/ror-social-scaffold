@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
     Friendship.create(user_id: current_user.id, friend_id: user.id, confirmed: false)
     redirect_to root_path, notice: 'Friendship invite sent'
   end
-
+  
   def confirm_request
     user = User.find(params[:id])
     current_user.confirm_friend(user)

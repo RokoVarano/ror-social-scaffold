@@ -39,9 +39,9 @@ gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'better_errors'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
+  gem "better_errors"
 end
 
 group :development do
@@ -63,9 +63,9 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'standard'
   gem 'capybara', '~> 3.35', '>= 3.35.3'
   gem 'capybara_test_helpers'
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  gem 'standard'
 end

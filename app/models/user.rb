@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}
+    friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
     friends_array.compact
   end
 
@@ -43,8 +43,8 @@ class User < ApplicationRecord
 
   def friend_posts
     fposts = []
-    friends.map { |friend| friend.posts.map { |post| fposts << post } }
+    friends.map { | friend | friend.posts.map {|post| fposts << post} }
     posts.map { |post| fposts << post }
-    fposts.sort_by { |post| post[:created_at] }.reverse
+    fposts.sort_by { |post| post[:created_at]}.reverse
   end
 end
