@@ -39,4 +39,8 @@ module ApplicationHelper
   def my_friends_link
     menu_link_to 'My Friends', "/users/#{current_user.id}/friendships" if current_user
   end
+
+  def logged_name
+    link_to current_user.name, "/users/#{current_user.id}" if current_user
+  end
 end

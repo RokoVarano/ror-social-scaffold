@@ -71,7 +71,15 @@ TBA
 
 ## Authors
 
-TBA
+:bust_in_silhouette: **John hernandez**
+- GitHub: [@johnhernandez-code](https://github.com/johnhernandez-code)
+- Twitter: [@JohnHernCode](https://twitter.com/JohnHernCode)
+- LinkedIn: [John Hernandez](https://www.linkedin.com/in/john-hernandez-56a7821b8/)
+
+:bust_in_silhouette: **Rodrigo Ibaceta**
+- GitHub: [Rodrigo Ibateca](https://github.com/RokoVarano/)
+- Twitter: [@Rodrigo Ibaceta](https://twitter.com/RodrigoIbacet11)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/rodrigo-ibaceta-a8657611a/)
 
 ## 🤝 Contributing
 
