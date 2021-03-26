@@ -67,20 +67,5 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'standard'
   gem 'capybara', '~> 3.35', '>= 3.35.3'
-end
-
-group :development, :test do
-end
-
-group :development, :test do
-end
-
-group :development, :test do
-end
-
-gem 'standard', group: [:development, :test]
-group :development, :test do
-end
-
-group :development, :test do
+  gem 'capybara_test_helpers'
 end
