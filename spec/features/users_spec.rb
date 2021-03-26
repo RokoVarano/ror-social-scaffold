@@ -1,13 +1,11 @@
 # rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 RSpec.feature 'Users', type: :feature do
-
   context 'Validate User Sign up' do
-
     before(:each) do
-      user = User.new(:name => 'TestGuy', :email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
+      user = User.new(name: 'TestGuy', email: 'test@example.com', password: 'password', password_confirmation: 'password')
       user.save
-  
+
       visit '/users/sign_up'
       within '.new_user' do
         fill_in 'user_name', with: 'clownsman'
@@ -35,7 +33,7 @@ RSpec.feature 'Users', type: :feature do
         fill_in 'user_name', with: User.last.name
       end
       click_button 'Sign up'
-      expect(page).to have_content("Name has already been taken")
+      expect(page).to have_content('Name has already been taken')
     end
 
     scenario 'should fail with no email' do
@@ -51,7 +49,7 @@ RSpec.feature 'Users', type: :feature do
         fill_in 'user_email', with: User.last.email
       end
       click_button 'Sign up'
-      expect(page).to have_content("Email has already been taken")
+      expect(page).to have_content('Email has already been taken')
     end
 
     scenario 'should fail with password < 6 chars' do
@@ -59,7 +57,7 @@ RSpec.feature 'Users', type: :feature do
         fill_in 'user_password', with: '12345'
       end
       click_button 'Sign up'
-      expect(page).to have_content("Password is too short (minimum is 6 characters)")
+      expect(page).to have_content('Password is too short (minimum is 6 characters)')
     end
 
     scenario 'should fail with no password' do
@@ -78,19 +76,18 @@ RSpec.feature 'Users', type: :feature do
       click_button 'Sign up'
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
-
   end
 
   context 'Validate User Log In' do
     before(:each) do
-      user = User.new(:name => 'TestGuy', :email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
+      user = User.new(name: 'TestGuy', email: 'test@example.com', password: 'password', password_confirmation: 'password')
       user.save
-  
+
       visit '/users/sign_in'
     end
 
     scenario 'should succeed' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: User.last.email
         fill_in 'user_password', with: 'password'
       end
@@ -99,7 +96,7 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should succeed if page is root path' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: User.last.email
         fill_in 'user_password', with: 'password'
       end
@@ -108,7 +105,7 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should fail with non-existing email' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: ''
         fill_in 'user_password', with: 'password'
       end
@@ -117,7 +114,7 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should fail with non-existing password' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: User.last.email
         fill_in 'user_password', with: ''
       end
@@ -126,7 +123,7 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should fail with wrong email' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: 'dumb@example.com'
         fill_in 'user_password', with: 'password'
       end
@@ -135,7 +132,7 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should fail with incomplete email' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: 'test@example'
         fill_in 'user_password', with: 'password'
       end
@@ -144,16 +141,12 @@ RSpec.feature 'Users', type: :feature do
     end
 
     scenario 'should fail with wrong password' do
-      within '.new_user' do 
+      within '.new_user' do
         fill_in 'user_email', with: User.last.email
         fill_in 'user_password', with: 'wrong'
       end
       click_button 'Log in'
       expect(page).to have_content('Invalid Email or password')
     end
-
   end
-
-
-
 end
