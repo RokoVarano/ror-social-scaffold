@@ -1,0 +1,9 @@
+<h4>My pending friendships</h4>
+<ul>
+<%= friends_list current_user.pending_friends %>
+</ul>
+<h4>People who want to be my friend</h4>
+<%= friends_list current_user.friend_requests %>
+
+<h4>My current friends</h4>
+<%= friends_list current_user.friends %>

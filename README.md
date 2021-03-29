@@ -1,6 +1,23 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+This version includes the following features:
+
+- Users can be created
+- Users can Log in
+
+Logged in Users:
+- Users have access to the main post index
+- Users have access to the 'All Users' page
+- Users have access to the 'Timeline' page (Post index)
+- Users have access to the 'My Friends' page
+
+The 'All Users' page features a list of users, each with a friend request option
+The 'My Friends' page features a list of friendship relationships. Clicking on a user will open that user's profile
+The user profile page displays the name of the user, his posts, and his current friends.
+The user profile page contains the 'Accept' and 'Reject' option for friend requests.
+The 'Timeline' page displays a list of friend and own posts, ordered chronologically
+
+This submission is for milestone 2, so mirror friendships are yet to be addressed
 
 ## Built With
 
@@ -14,7 +31,7 @@ TBA
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+Clone the folowing [repository](https://github.com/RokoVarano/ror-social-scaffold)
 
 ### Prerequisites
 
@@ -63,15 +80,21 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 ### Deployment
 
 TBA
 
 ## Authors
 
-TBA
+:bust_in_silhouette: **John hernandez**
+- GitHub: [@johnhernandez-code](https://github.com/johnhernandez-code)
+- Twitter: [@JohnHernCode](https://twitter.com/JohnHernCode)
+- LinkedIn: [John Hernandez](https://www.linkedin.com/in/john-hernandez-56a7821b8/)
+
+:bust_in_silhouette: **Rodrigo Ibaceta**
+- GitHub: [Rodrigo Ibateca](https://github.com/RokoVarano/)
+- Twitter: [@Rodrigo Ibaceta](https://twitter.com/RodrigoIbacet11)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/rodrigo-ibaceta-a8657611a/)
 
 ## 🤝 Contributing
 

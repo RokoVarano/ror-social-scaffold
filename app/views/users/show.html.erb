@@ -1,9 +1,19 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= link_list(@user)%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+</section>
+<section class="user-section">
+<article>
+  <h3>All friends:</h3>
+  <br />
+  <ul class="users-list">
+    <%= render @friends %>
+  </ul>
+</article>
 </section>
