@@ -17,8 +17,6 @@ The user profile page displays the name of the user, his posts, and his current 
 The user profile page contains the 'Accept' and 'Reject' option for friend requests.
 The 'Timeline' page displays a list of friend and own posts, ordered chronologically
 
-This submission is for milestone 2, so mirror friendships are yet to be addressed
-
 ## Built With
 
 - Ruby v2.7.0
