@@ -11,10 +11,22 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships_confirmation
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    inversed = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.concat(inversed)
+  def friend_list
+    friends_array = []
+
+    friendships.map do |friendship|
+      friends_array << friendship.friend if friendship.confirmed
+    end
+
+    inverse_friendships do |f1|
+      mirrored = false
+      friendships.map do |f2|
+        mirrored = true if f1.mirror?(f2)
+      end
+
+      friends_array << f1.friend unless mirrored || !f1.confirmed
+    end
+
     friends_array.compact
   end
 
@@ -44,7 +56,7 @@ class User < ApplicationRecord
 
   def friend_posts
     fposts = []
-    friends.map { |friend| friend.posts.map { |post| fposts << post } }
+    friend_list.map { |friend| friend.posts.map { |post| fposts << post } }
     posts.map { |post| fposts << post }
     fposts.sort_by { |post| post[:created_at] }.reverse
   end
