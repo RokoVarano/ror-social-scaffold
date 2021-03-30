@@ -63,7 +63,7 @@ class User < ApplicationRecord
 
   # commented this old method for archive and learning purposes
 
-  # def friend_posts 
+  # def friend_posts
   #  fposts = []
   #  friend_list.map { |friend| friend.posts.map { |post| fposts << post } }
   #  posts.map { |post| fposts << post }
@@ -71,7 +71,7 @@ class User < ApplicationRecord
   # end
 
   def friends_and_own_posts
-    Post.where(user: (self.friends.to_a << self)).sort_by { |post| post[:created_at] }.reverse
+    Post.where(user: (friends.to_a << self)).sort_by { |post| post[:created_at] }.reverse
     # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
   end
 end
