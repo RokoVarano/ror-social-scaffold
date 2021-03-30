@@ -15,4 +15,32 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def flasher(flash)
+    if flash.now[:alert]
+      "<div class='notification is-danger global-notification'>
+        <p class='alert'>#{alert}</p>
+      </div>".html_safe
+    elsif flash.now[:notice]
+      "<div class='notification is-info global-notification'>
+        <p class='notice'> #{notice} </p>
+      </div>".html_safe
+    end
+  end
+
+  def sign_in_out
+    if current_user
+      link_to 'Sign out', destroy_user_session_path, method: :delete
+    else
+      link_to 'Sign in', user_session_path
+    end
+  end
+
+  def my_friends_link
+    menu_link_to 'My Friends', "/users/#{current_user.id}/friendships" if current_user
+  end
+
+  def logged_name
+    link_to current_user.name, "/users/#{current_user.id}" if current_user
+  end
 end
