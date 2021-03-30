@@ -6,8 +6,9 @@ class Friendship < ActiveRecord::Base
   belongs_to :friend, class_name: 'User'
 
   # This filter needs to be deleted after mirror friend relationships have been handled in the database
-  def mirror?(friendship)
-    true if user.id == friendship.friend.id && friend.id == friendship.user.id
-    false
-  end
+  # commented this old method for archive and learning purposes
+  # def mirror?(friendship)
+  #  true if user.id == friendship.friend.id && friend.id == friendship.user.id
+  #  false
+  # end
 end

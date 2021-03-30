@@ -9,26 +9,33 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friendships_confirmation, -> { where confirmed: true }, class_name: 'Friendship'
   has_many :friends, through: :friendships_confirmation
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  # has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  # Changed to inverse instead of inverted due to app using inverse
+  has_many :inverse_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverse_friendships
 
-  def friend_list
-    friends_array = []
+  # commented this old method for archive and learning purposes
 
-    friendships.map do |friendship|
-      friends_array << friendship.friend if friendship.confirmed
-    end
+  # def friend_list
+  #  friends_array = []
 
-    inverse_friendships do |f1|
-      mirrored = false
-      friendships.map do |f2|
-        mirrored = true if f1.mirror?(f2)
-      end
+  #  friendships.map do |friendship|
+  #    friends_array << friendship.friend if friendship.confirmed
+  #  end
 
-      friends_array << f1.friend unless mirrored || !f1.confirmed
-    end
+  #  inverse_friendships do |f1|
+  #    mirrored = false
+  #    friendships.map do |f2|
+  #      mirrored = true if f1.mirror?(f2)
+  #    end
 
-    friends_array.compact
-  end
+  #    friends_array << f1.friend unless mirrored || !f1.confirmed
+  #  end
+
+  #  friends_array.compact
+  # end
 
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
@@ -54,10 +61,17 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friend_posts
-    fposts = []
-    friend_list.map { |friend| friend.posts.map { |post| fposts << post } }
-    posts.map { |post| fposts << post }
-    fposts.sort_by { |post| post[:created_at] }.reverse
+  # commented this old method for archive and learning purposes
+
+  # def friend_posts 
+  #  fposts = []
+  #  friend_list.map { |friend| friend.posts.map { |post| fposts << post } }
+  #  posts.map { |post| fposts << post }
+  #  fposts.sort_by { |post| post[:created_at] }.reverse
+  # end
+
+  def friends_and_own_posts
+    Post.where(user: (self.friends.to_a << self)).sort_by { |post| post[:created_at] }.reverse
+    # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
   end
 end
