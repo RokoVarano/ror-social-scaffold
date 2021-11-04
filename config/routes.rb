@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
+  mount API::Base, at: "/"
   root 'posts#index'
-
   devise_for :users
 
   resources :users, only: [:index, :show] do
