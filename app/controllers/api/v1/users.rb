@@ -14,6 +14,12 @@ module API
           get ":id" do
             User.where(id: permitted_params[:id]).first!
           end
+          get ":id/posts" do
+            Post.where(user_id: request.path.split("/")[4])
+          end
+          get ":id/posts/:post_id/comments" do
+            Comment.where(post_id: request.path.split("/")[6])
+          end
         end
       end
     end
