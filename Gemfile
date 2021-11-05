@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
 gem 'grape'
+gem 'grape-active_model_serializers'
 gem 'grape_devise_token_auth', '~> 0.1.4'
 gem 'rack-cors'
-gem 'grape-active_model_serializers'
+gem 'rails', '~> 5.2.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets

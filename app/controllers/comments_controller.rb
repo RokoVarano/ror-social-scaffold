@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @comments = Comment.all
 
     respond_to do |format|
       format.html # coments.html.erb
-      format.xml { render :xml => @comments }
-      format.json { render :json => @comments }
+      format.xml { render xml: @comments }
+      format.json { render json: @comments }
     end
   end
 
