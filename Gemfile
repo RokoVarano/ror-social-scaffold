@@ -6,6 +6,7 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 gem 'grape'
+gem 'grape_devise_token_auth', '~> 0.1.4'
 gem 'rack-cors'
 gem 'grape-active_model_serializers'
 # Use Puma as the app server
@@ -39,6 +40,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
+gem 'devise_token_auth', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

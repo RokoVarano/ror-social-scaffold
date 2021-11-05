@@ -13,25 +13,31 @@ module API
           end
           get ":id" do
             puts(@current_user)
-            User.where(user_id: @current_user[:id]).first!
+            User.where(id: permitted_params[:id]).first!
           end
           get ":id/posts" do
-            Post.where(user_id: @current_user[:id]).sort
-          end
-          post ":id/posts" do
-            Post.create(user_id: @current_user[:id], content: params[:content])
+            Post.where(user_id: request.path.split("/")[4])
           end
           get ":id/posts/:post_index" do
-            Post.where(user_id: @current_user[:id]).sort[request.path.split("/")[6].to_i - 1]
+            Post.where(user_id: request.path.split("/")[4]).sort[request.path.split("/")[6].to_i - 1]
           end
           get ":id/posts/:post_id/comments" do
-            Comment.where(user_id: @current_user[:id]).where(post_id: request.path.split("/")[6]).sort
-          end
-          get ":id/posts/:post_id/comments" do
-            Comment.create(user_id: @current_user[:id], post_id: request.path.split("/")[6], content: params[:content])
+            puts(request.path)
+            post = Post.where(user_id: request.path.split("/")[4]).sort[request.path.split("/")[6].to_i - 1]
+            post.comments.sort
+            # Comment.where(user_id: request.path.split("/")[4]).where(post_id: request.path.split("/")[6]).sort
           end
           get ":id/posts/:post_id/comments/:comment_index" do
-            Comment.where(user_id: @current_user[:id]).where(post_id: request.path.split("/")[6]).sort[request.path.split("/")[8].to_i - 1]
+            post = Post.where(user_id: request.path.split("/")[4]).sort[request.path.split("/")[6].to_i - 1]
+            post.comments.sort[request.path.split("/")[8].to_i - 1]
+            # Comment.where(user_id: request.path.split("/")[4]).sort[request.path.split("/")[8].to_i - 1]
+          end
+          post ":id/posts" do
+            Post.create(user_id: request.path.split("/")[4], content: params[:content])
+          end
+          post ":id/posts/:post_id/comments" do
+            post = Post.where(user_id: request.path.split("/")[4]).sort[request.path.split("/")[6].to_i - 1]
+            Comment.create(user_id: request.path.split("/")[4], post_id: post[:id], content: params[:content])
           end
         end
       end
