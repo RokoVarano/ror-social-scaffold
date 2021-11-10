@@ -82,17 +82,35 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
+### API Usage
+
+API endpoints have been created per exercise requirements.
+
+get /posts -> Get all posts
+get /posts/:post_id/comments -> Get all comments of a post
+post /posts -> Create an API endpoint to add a comment to a post. Provide a { "comment" : string } field.
+
+Each endpoint requires to login to work. Login by:
+
+post /users/sign_up -> Provide a {"user": {"name": "Emmanuel", "email": "emmanuel@mail.com", "password": "123456", "password_confirmation": "123456"}} field to registrate a new user.
+post /users/sign_in -> Provide a { "user": { "email": "useremail@mail.com", "password": "123456"}} field to log in.
+
 ## Authors
 
-:bust_in_silhouette: **John hernandez**
-- GitHub: [@johnhernandez-code](https://github.com/johnhernandez-code)
-- Twitter: [@JohnHernCode](https://twitter.com/JohnHernCode)
-- LinkedIn: [John Hernandez](https://www.linkedin.com/in/john-hernandez-56a7821b8/)
+:bust_in_silhouette: **Emmanuel Isabirye**
+- GitHub: [Emmanuelaaron](https://github.com/Emmanuelaaron) 
+- LinkedIn : [Emmanuel Isabirye](https://www.linkedin.com/in/fullstackwebdev-emma/) 
+- Twitter: [Emmanuel Isabirye](https://twitter.com/EmmanuelIsabir1) 
 
 :bust_in_silhouette: **Rodrigo Ibaceta**
-- GitHub: [Rodrigo Ibateca](https://github.com/RokoVarano/)
+- GitHub: [Rodrigo Ibaceta](https://github.com/RokoVarano/)
 - Twitter: [@Rodrigo Ibaceta](https://twitter.com/RodrigoIbacet11)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/rodrigo-ibaceta-a8657611a/)
+
+:bust_in_silhouette: **Opeyemo Oyelesi**
+- GitHub: [@AdedayoOpeyemi](https://github.com/AdedayoOpeyemi) 
+- Twitter: [@Oyelesiopy](https://twitter.com/Oyelesiopy) 
+- LinkedIn: [Opeyemi Oyelesi](https://linkedin.com/in/opeyemioyelesi) 
 
 ## 🤝 Contributing
 
