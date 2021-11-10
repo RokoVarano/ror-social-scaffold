@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
@@ -40,12 +40,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'rswag-api'
+gem 'rswag-ui'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
+  gem 'rswag-specs'
 end
 
 group :development do
