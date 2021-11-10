@@ -5,9 +5,15 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to posts_path, notice: 'Comment was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to posts_path, notice: 'Comment was successfully created.'}
+        format.json { render json: { message: "succesfully created." }, status: :ok }
+      end
     else
-      redirect_to posts_path, alert: @comment.errors.full_messages.join('. ').to_s
+      respond_to do |format|
+        format.html { redirect_to posts_path, alert: @comment.errors.full_messages.join('. ').to_s}
+        format.json { render json: { message: @comment.errors.full_messages.join('. ').to_s }, status: :error }
+      end
     end
   end
 
