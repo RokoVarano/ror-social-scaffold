@@ -1,0 +1,4 @@
+USER_NAME: 'postgres'
+PASSWORD: 'comforter'
+DATABASE: 'social_db'
+DATABASE_TEST: 'social_test_db'
