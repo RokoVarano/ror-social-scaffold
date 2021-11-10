@@ -14,8 +14,8 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.'}
-        format.json { render json: { message: "succesfully created." }, status: :ok }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.json { render json: { message: 'succesfully created.' }, status: :ok }
       end
     else
       timeline_posts
